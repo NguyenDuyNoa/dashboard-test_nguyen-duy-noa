@@ -12,12 +12,32 @@ import {
 } from "recharts";
 import CalendarDropdown from "../CalendarDropdown";
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+// Định nghĩa kiểu cho props của CustomTooltip
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    name: string;
+    color?: string;
+    value: number;
+  }>;
+  label?: string;
+}
+
+// Định nghĩa kiểu cho props của XAxis và YAxis tick
+interface TickProps {
+  x: number;
+  y: number;
+  payload: {
+    value: string | number;
+  };
+}
+
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-dark-primary text-neutral-00 px-3 py-2 rounded-lg text-sm font-medium">
         <p className="mb-1">{`${label}`}</p>
-        {payload.map((entry: any, index: number) => (
+        {payload.map((entry, index) => (
           <p key={`item-${index}`} style={{ color: entry.color }}>
             {`${entry.name}: ${entry.value} cái`}
           </p>
@@ -77,7 +97,7 @@ const Plan = () => {
             axisLine={false}
             tickLine={false}
             dy={10}
-            tick={(props) => {
+            tick={(props: TickProps) => {
               const { x, y, payload } = props;
               return (
                 <g transform={`translate(${x},${y})`}>
@@ -105,7 +125,7 @@ const Plan = () => {
             axisLine={false}
             tickLine={false}
             ticks={[0, 25, 50, 75, 100]}
-            tick={(props) => {
+            tick={(props: TickProps) => {
               const { x, y, payload } = props;
               return (
                 <g transform={`translate(${x - 10},${y})`}>

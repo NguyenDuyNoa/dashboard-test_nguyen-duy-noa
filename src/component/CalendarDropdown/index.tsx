@@ -28,7 +28,9 @@ const CalendarDropdown: React.FC<CalendarDropdownProps> = ({
   const handleRangeSelect = (range: { label: string; value: string }) => {
     setSelectedRange(range);
     setIsOpen(false);
-    onRangeChange && onRangeChange(range);
+    if (onRangeChange) {
+      onRangeChange(range);
+    }
   };
 
   useEffect(() => {

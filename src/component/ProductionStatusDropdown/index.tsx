@@ -28,7 +28,9 @@ const ProductionStatusDropdown: React.FC<ProductionStatusDropdownProps> = ({
   const handleStatusSelect = (status: { label: string; value: string }) => {
     setSelectedStatus(status);
     setIsOpen(false);
-    onStatusChange && onStatusChange(status);
+    if (onStatusChange) {
+      onStatusChange(status);
+    }
   };
 
   useEffect(() => {

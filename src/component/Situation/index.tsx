@@ -9,6 +9,25 @@ interface SituationProps {
   initialData?: ProductionStatus;
 }
 
+// Thêm interface mới để định nghĩa kiểu cho props của renderActiveShape
+interface RenderActiveShapeProps {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  startAngle: number;
+  endAngle: number;
+  fill: string;
+  payload: {
+    name: string;
+    value: number;
+    color: string;
+    percent: number;
+  };
+  index: number;
+}
+
 const Situation: React.FC<SituationProps> = ({}) => {
   const [currentData, setCurrentData] = useState<ProductionStatus[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -51,30 +70,31 @@ const Situation: React.FC<SituationProps> = ({}) => {
     completed = 0,
   } = currentData[0] || {};
 
-  const data =currentData.length === 0 
-    ? defaultData 
-    : [
-        {
-          name: "Chưa hoàn thành",
-          value: notCompleted,
-          color: "#FF8F0D",
-          percent: Math.round((notCompleted / total) * 100),
-        },
-        {
-          name: "Đang sản xuất",
-          value: inProduction,
-          color: "#0375F3",
-          percent: Math.round((inProduction / total) * 100),
-        },
-        {
-          name: "Hoàn thành",
-          value: completed,
-          color: "#1FC583",
-          percent: Math.round((completed / total) * 100),
-        },
-      ];
+  const data =
+    currentData.length === 0
+      ? defaultData
+      : [
+          {
+            name: "Chưa hoàn thành",
+            value: notCompleted,
+            color: "#FF8F0D",
+            percent: Math.round((notCompleted / total) * 100),
+          },
+          {
+            name: "Đang sản xuất",
+            value: inProduction,
+            color: "#0375F3",
+            percent: Math.round((inProduction / total) * 100),
+          },
+          {
+            name: "Hoàn thành",
+            value: completed,
+            color: "#1FC583",
+            percent: Math.round((completed / total) * 100),
+          },
+        ];
 
-  const renderActiveShape = (props: any) => {
+  const renderActiveShape = (props: RenderActiveShapeProps) => {
     const RADIAN = Math.PI / 180;
     const {
       cx,
@@ -150,8 +170,9 @@ const Situation: React.FC<SituationProps> = ({}) => {
           Tình hình sản xuất
         </h2>
         <div className="flex items-center gap-2">
-          <CalendarDropdown 
-          defaultRange={{ label: "Hôm nay", value: "today" }}/>
+          <CalendarDropdown
+            defaultRange={{ label: "Hôm nay", value: "today" }}
+          />
         </div>
       </div>
       <div className="relative h-full xl:min-h-[322px]">
@@ -166,7 +187,8 @@ const Situation: React.FC<SituationProps> = ({}) => {
               innerRadius={80}
               paddingAngle={5}
               dataKey="value"
-              activeShape={isLoading ? undefined : renderActiveShape}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              activeShape={isLoading ? undefined : (renderActiveShape as any)}
               activeIndex={[0, 1, 2]}
               cornerRadius={15}
             >
@@ -178,7 +200,7 @@ const Situation: React.FC<SituationProps> = ({}) => {
         </ResponsiveContainer>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
           <div className="text-4xl font-semibold text-neutral-07 mb-[2px]">
-            {(total || 0)}
+            {total || 0}
           </div>
           <div className="text-base font-normal text-neutral-03">
             Lệnh sản xuất

@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import CalendarDropdown from "../CalendarDropdown";
+import React, { useEffect, useState } from "react";
 import progressData from "../../data/progressData";
 import ProductionStatusDropdown from "../ProductionStatusDropdown";
 
