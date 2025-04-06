@@ -33,7 +33,7 @@ const Top5 = () => {
   return (
     <div className="p-6 rounded-2xl bg-neutral-00 w-full shadow-[0px_12px_24px_-4px_rgba(145,158,171,0.12),0px_0px_2px_0px_rgba(145,158,171,0.20)]">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-6">
-        <h2 className="capitalize text-lg font-medium text-neutral-07">
+        <h2 className="truncate capitalize text-lg font-medium text-neutral-07">
           Top 5 Khách Hàng Có Sản Lượng Nhiều Nhất
         </h2>
         <CalendarDropdown
