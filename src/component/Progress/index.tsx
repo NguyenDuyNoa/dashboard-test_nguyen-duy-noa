@@ -49,7 +49,7 @@ const Progress: React.FC = () => {
   return (
     <div className="flex flex-col gap-2 w-full p-3 xl:p-6 rounded-2xl bg-neutral-00 shadow-[0px_12px_24px_-4px_rgba(145,158,171,0.12),0px_0px_2px_0px_rgba(145,158,171,0.20)]">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-6">
-        <h2 className="text capitalize text-lg font-medium text-neutral-07">
+        <h2 className="truncate text capitalize text-lg font-medium text-neutral-07">
           Tiến độ sản xuất theo nhóm
         </h2>
         <div className="flex justify-end w-full sm:w-fit">

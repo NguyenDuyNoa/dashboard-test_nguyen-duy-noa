@@ -166,7 +166,7 @@ const Situation: React.FC<SituationProps> = ({}) => {
   return (
     <div className="flex flex-col gap-5 w-full p-6 rounded-2xl bg-neutral-00 shadow-[0px_12px_24px_-4px_rgba(145,158,171,0.12),0px_0px_2px_0px_rgba(145,158,171,0.20)]">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="capitalize text-lg font-medium text-neutral-07">
+        <h2 className="truncate capitalize text-lg font-medium text-neutral-07">
           Tình hình sản xuất
         </h2>
         <div className="flex items-center gap-2">

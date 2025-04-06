@@ -28,7 +28,7 @@ const Materials = () => {
   return (
     <div className="rounded-2xl bg-neutral-00 w-full shadow-[0px_12px_24px_-4px_rgba(145,158,171,0.12),0px_0px_2px_0px_rgba(145,158,171,0.20)]">
       <div className="py-6 px-4 flex justify-between items-center">
-        <h2 className="capitalize text-lg font-medium text-neutral-07">
+        <h2 className="truncate capitalize text-lg font-medium text-neutral-07">
           Nguyên Vật Liệu Cần Mua
         </h2>
         <CalendarDropdown

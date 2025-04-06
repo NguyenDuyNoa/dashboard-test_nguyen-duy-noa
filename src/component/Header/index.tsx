@@ -22,7 +22,7 @@ const Header = () => {
     <header className="z-[999] sticky top-0 h-[72px] bg-new-blue px-6 flex justify-between items-center">
       <div className="flex items-center gap-6">
         <Image src={IMAGES.logo} alt="logo" width={100} height={100} />
-        <div className="hidden lg:flex items-center flex-wrap">
+        <div className="hidden items-center">
           {menuItems.map((item, index) => (
             <Link
               key={index}
@@ -57,7 +57,7 @@ const Header = () => {
         
         {/* Mobile menu button */}
         <button 
-          className="lg:hidden"
+          className="xl:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -100,7 +100,7 @@ const Header = () => {
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div 
-          className={`fixed top-[72px] left-0 right-0 bottom-0 bg-new-blue p-4 lg:hidden 
+          className={`fixed top-[72px] left-0 right-0 bottom-0 bg-new-blue p-4 xl:hidden 
             animate-slide-down-enter overflow-y-auto`}
         >
           <div className="flex flex-col space-y-4">
