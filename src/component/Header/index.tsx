@@ -22,7 +22,7 @@ const Header = () => {
     <header className="z-[999] sticky top-0 h-[72px] bg-new-blue px-6 flex justify-between items-center">
       <div className="flex items-center gap-6">
         <Image src={IMAGES.logo} alt="logo" width={100} height={100} />
-        <div className="hidden items-center">
+        <div className="hidden xl:flex items-center">
           {menuItems.map((item, index) => (
             <Link
               key={index}
